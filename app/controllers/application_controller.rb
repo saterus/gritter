@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def current_user
-    @current_user ||= (session[:username] && User.find(username: session[:username]))
+    @current_user ||= User.find(username: session[:username]) if session[:username]
+  end
+
+  def require_login
+    redirect_to new_session_path, alert: 'You must login to continue.' unless current_user
   end
 end

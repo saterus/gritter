@@ -1,0 +1,12 @@
+= form_for :user, url: sessions_path, method: :post do |f|
+
+  .field
+    = f.label :username
+    = f.text_field :username
+
+  .field
+    = f.label :password
+    = f.password_field :password
+
+  .actions = f.submit 'Login'
+

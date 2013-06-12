@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    title Gritter
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+  body
+    ul.flash
+      - flash.each do |type, msg|
+        li(class=type)= msg
+
+    nav
+      ul
+        li= link_to 'Gritter', root_path
+        li= link_to 'Grits', grits_path
+        - if current_user
+          li.right= link_to 'Sign Out', sign_out_path
+        - else
+          li.right= link_to 'Sign In', sign_in_path
+
+    = yield
