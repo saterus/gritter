@@ -1,0 +1,5 @@
+/.bundle
+/db/neo4j-*
+/log/*.log
+/tmp
+.rvmrc
