@@ -1,6 +1,10 @@
 h1 Grits:
 
+= link_to 'New Grit', new_grit_path
+
 ul
   li Sample 1
   li Sample 2
   li Sample 3
+  - @grits.each do |grit|
+    li= render partial: 'grit', locals: {grit: grit}

@@ -8,7 +8,8 @@ gem 'neo4j', '>= 2.2.3'
 gem 'jquery-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'slim-rails', '~> 2.0'
-gem "virtus", "~> 0.5.5"
+gem 'virtus', '~> 0.5.5'
+gem 'stamp'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

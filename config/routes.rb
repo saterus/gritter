@@ -1,5 +1,5 @@
 Gritter::Application.routes.draw do
-  resources :grits, only: [:index]
+  resources :grits
   resources :sessions, only: [:new, :create, :destroy]
   resources :registrations, only: [:new, :create]
 

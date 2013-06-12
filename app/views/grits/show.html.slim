@@ -1,0 +1,13 @@
+.main
+  = render partial: 'grit', locals: {grit: @grit}
+
+.related
+  - if @grit.next.present?
+    .next
+      h4 Next Grit
+      = render partial: 'grit', locals: {grit: @grit.next}
+  - if @grit.previous.present?
+    .prev
+      h4 Previous Grit
+      = render partial: 'grit', locals: {grit: @grit.previous}
+

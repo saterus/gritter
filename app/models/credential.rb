@@ -6,6 +6,8 @@ class Credential < Neo4j::Rails::Model
 
   property :password_salt, type: String
   property :password_hash, type: String
+  property :updated_at
+  property :created_at
 
   has_one(:owner).to(User)
 
