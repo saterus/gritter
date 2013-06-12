@@ -12,4 +12,14 @@ class User < Neo4j::Rails::Model
   validates :username, presence: true, length: {in: 1..20}
   validates :name, presence: true, length: {in: 1..50}
 
+  def avatar_url(size=80)
+    "https://secure.gravatar.com/avatar/#{avatar_hash}?f=y&d=wavatar&s=#{size}"
+  end
+
+  private
+
+  def avatar_hash
+    Digest::MD5.hexdigest(username)
+  end
+
 end

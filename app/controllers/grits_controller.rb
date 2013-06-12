@@ -17,8 +17,8 @@ class GritsController < ApplicationController
     @grit = current_user.grits.build(params[:grit].slice(:body))
     @grit.previous = current_user.latest_grit
     current_user.latest_grit = @grit
-    if @grit.save
-      render grit_path(@grit)
+    if @grit.save && current_user.save
+      render :show
     else
       render :new
     end

@@ -1,6 +1,6 @@
-h1 Grits:
+= image_tag @user.avatar_url(150)
 
-= link_to 'New Grit', new_grit_path
+h3= @user.username
 
 ul
   - @grits.each do |grit|
