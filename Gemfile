@@ -8,7 +8,7 @@ gem 'neo4j', '>= 2.2.3'
 gem 'jquery-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'slim-rails', '~> 2.0'
-gem 'quiet_assets'
+gem "virtus", "~> 0.5.5"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -20,6 +20,7 @@ group :development, :test do
   gem "rspec-rails"
   gem 'pry'
   gem 'pry-rails'
+  gem 'quiet_assets'
 end
 
 

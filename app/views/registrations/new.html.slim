@@ -1,0 +1,27 @@
+= form_for :registration, url: registrations_path, method: :post do |f|
+  - if @registration.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@registration.errors.count, "error")} errors were found:"
+      ul
+        - @registration.errors.full_messages.each do |message|
+          li = message
+
+
+  .field
+    = f.label :name
+    = f.text_field :name
+
+  .field
+    = f.label :username
+    = f.text_field :username
+
+  .field
+    = f.label :password
+    = f.password_field :password
+
+  .field
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation
+
+  .actions = f.submit 'Login'
+
