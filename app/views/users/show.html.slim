@@ -2,6 +2,8 @@
 
 h3= @user.username
 
-ul
-  - @grits.each do |grit|
+p= simple_format @user.bio if @user.bio.present?
+
+ul.vertical-list
+  - @user.grits.each do |grit|
     li= render partial: 'grits/grit', locals: {grit: grit}

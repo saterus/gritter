@@ -2,6 +2,7 @@ class User < Neo4j::Rails::Model
 
   property :username, type: String, index: :exact
   property :name, type: String, index: :fulltext
+  property :bio, type: String
   property :updated_at
   property :created_at
 

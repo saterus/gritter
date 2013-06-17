@@ -159,6 +159,8 @@ GEM
     virtus (0.5.5)
       backports (~> 3.3)
       descendants_tracker (~> 0.0.1)
+    zurb-foundation (4.0.9)
+      sass (>= 3.2.0)
 
 PLATFORMS
   java
@@ -179,3 +181,4 @@ DEPENDENCIES
   therubyrhino
   uglifier (>= 1.0.3)
   virtus (~> 0.5.5)
+  zurb-foundation (~> 4.0.0)
