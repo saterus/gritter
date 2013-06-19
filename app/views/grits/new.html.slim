@@ -1,20 +1,3 @@
 h3 New Grit
 
-= form_for :grit, url: grits_url, method: :post do |f|
-
-  .field
-    = f.label :body
-    = f.text_area :body, rows: 3, class: 'grit-body'
-    .counter
-      span.count
-        '140 
-      | characters remaining
-
-  .actions = f.submit 'Grit It!'
-
-javascript:
-  $('.grit-body').on('keyup', function(e) {
-    var chars = $('.grit-body').val().length;
-    $('.count').text((140 - chars) + " ");
-  });
-
+= render partial: 'grits/form'

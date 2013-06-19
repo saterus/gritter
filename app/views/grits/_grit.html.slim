@@ -1,7 +1,13 @@
 = link_to user_path(grit.author)
-  = image_tag grit.author.avatar_url(40)
-  = grit.author.username
-': 
-= link_to grit.created_at.stamp('Jan 22nd 5:13pm'), grit_path(grit)
-br
-= grit.body
+  .avatar= image_tag grit.author.avatar_url(90)
+= link_to user_path(grit.author)
+  .username
+    | @
+    = grit.author.username
+    | &nbsp;&nbsp;
+    span.name
+      | (
+      = grit.author.name
+      |)
+.body= grit.body
+.timestamp= link_to grit.created_at.stamp('Jan 22nd 5:13pm'), grit_path(grit)

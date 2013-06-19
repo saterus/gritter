@@ -1,7 +1,8 @@
-h1 Grits:
+.new-grit
+  = render partial: 'grits/form'
 
-= link_to 'New Grit', new_grit_path
-
-ul.vertical-list
+.vertical-list
   - @grits.each do |grit|
-    li= render partial: 'grits/grit', locals: {grit: grit}
+    .row
+      .vertical-list-item.grit
+        = render partial: 'grits/grit', locals: {grit: grit}

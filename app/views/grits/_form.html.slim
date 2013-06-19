@@ -1,0 +1,9 @@
+= form_for :grit, url: grits_url, method: :post do |f|
+
+  .field
+    = f.text_area :body, rows: 3, class: 'grit-body', placeholder: "What's up?"
+    .actions.right= f.submit 'Grit It!', class: 'button'
+    .counter
+      span.count
+        '140 
+      | characters remaining
