@@ -7,9 +7,9 @@ head
   = javascript_include_tag "application"
   = csrf_meta_tag
 
-body
+body.gritter
 
-  .row
+  .row.nav-row
     nav.top-bar.constrain-to-grid
       ul.title-area
         li.name
@@ -18,7 +18,7 @@ body
       section.top-bar-section
         ul.left
           li.divider
-          li= link_to 'Grits', grits_path
+          li= link_to 'Timeline', grits_path
           li= link_to 'Users', users_path
 
       section.top-bar-section
@@ -32,12 +32,15 @@ body
             li= link_to 'Sign Up', new_registration_path
 
   .row
-    .flash
-      - flash.each do |type, msg|
-        div(class="alert-box #{type}" data-alert)
-          = msg
-          = link_to '#', class: 'close' do
-            '&times;
+    .backer.columns.large-12
+      - unless flash.empty?
+        .row
+          .flash
+            - flash.each do |type, msg|
+              div(class="alert-box #{type}" data-alert)
+                = msg
+                = link_to '#', class: 'close' do
+                  '&times;
 
-  .row
-    == yield
+      .row
+        == yield

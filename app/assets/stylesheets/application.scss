@@ -13,3 +13,152 @@
  *= require_tree .
  */
 
+@import 'foundation';
+
+.follow, .unfollow {
+  a { @include button; }
+
+  &.small {
+    a { @include button; @include button-size($button-sml);}
+  }
+}
+
+body.gritter {
+  background-color: lighten(desaturate($primary-color, 30%), 10%);
+}
+
+.backer {
+  background-color: lighten(desaturate($primary-color, 20%), 50%);
+  border-left: 1px solid rgba(0,0,0,0.5);
+  border-right: 1px solid rgba(0,0,0,0.5);
+}
+
+.nav-row {
+  height: 46px;
+  background-color: red;
+}
+
+.new-grit {
+  @include grid-column(8, false, true, 3);
+  padding-top: 15px;
+  padding-bottom: 20px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  border: 1px solid rgba(0,0,0,0.1);
+  background-color: lighten($primary-color, 40%);
+}
+
+.counter {
+  margin-bottom: 5px;
+
+  &.over {
+    color: red;
+  }
+}
+
+.vertical-list {
+  @include grid-column(8, false, true, 3);
+  background-color: lighten($primary-color, 20%);
+
+  .row {
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    border-left: 1px solid rgba(0,0,0,0.1);
+    border-right: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+
+    background-color: rgba(255,255,255,0.5);
+
+    &:first-child {
+      border-top: 1px solid rgba(0,0,0,0.1);
+    }
+
+    &:nth-child(2n+1) {
+      background-color: rgba(255,255,255,0.65);
+    }
+  }
+
+  .vertical-list-item {
+    height: 100px;
+    padding: 0px 60px;
+    position: relative;
+  }
+}
+
+.grit {
+  .avatar {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+  }
+
+  .username {
+    position: absolute;
+    top: 10px;
+    left: 130px;
+    font-size: 1.1em;
+    .name {
+      font-size: 0.909em;
+    }
+  }
+
+  .timestamp {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+  }
+
+  .body {
+    position: absolute;
+    top: 35px;
+    left: 130px;
+    width: 495px;
+  }
+}
+
+.user {
+  .avatar {
+    position: absolute;
+    top: 5px;
+    left: 20px;
+  }
+
+  .username {
+    position: absolute;
+    top: 5px;
+    left: 130px;
+    font-size: 1.1em;
+    .name {
+      font-size: 0.909em;
+    }
+  }
+
+  .bio {
+    position: absolute;
+    top: 35px;
+    left: 130px;
+    width: 465px;
+    font-size: 0.75em;
+  }
+
+  .follow-container {
+    position: absolute;
+    top: 5px;
+    right: 20px;
+  }
+
+  .followers {
+    position: absolute;
+    top: 5px;
+    right: 120px;
+    font-size: 0.85em;
+  }
+
+  .following {
+    position: absolute;
+    top: 20px;
+    right: 120px;
+    font-size: 0.85em;
+  }
+}
