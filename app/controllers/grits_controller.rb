@@ -2,15 +2,7 @@ class GritsController < ApplicationController
   before_filter :require_login
 
   def index
-    @grits = Neo4j.query(current_user){ |u|
-      u > User.following > node(:followed) < Grit.author < node(:g).desc(:created_at).limit(25)
-      ret(:g)
-    }.to_a.map{|res| res[:g] }
-
-    if @grits.empty?
-      @grits = Grit.find(:all).take(50)
-      flash[:notice] = 'You should follow someone to get a customized timeline.'
-    end
+    @grits = current_user.full_timeline
   end
 
   def show
