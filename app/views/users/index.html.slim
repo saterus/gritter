@@ -1,10 +1,23 @@
-h3 Users
-
-ul.vertical-list
+.vertical-list
   - @users.each do |user|
-    li
-      = link_to user_path(user)
-        = image_tag user.avatar_url
-        = user.username
-      br
-      = link_to user.latest_grit.body, grit_path(user.latest_grit) unless user.latest_grit.nil?
+    .row
+      .vertical-list-item.user
+        = link_to user_path(user)
+          .avatar= image_tag user.avatar_url(90)
+        = link_to user_path(user)
+          .username
+            | @
+            = user.username
+            | &nbsp;&nbsp;
+            span.name
+              | (
+              = user.name
+              |)
+        .followers
+          'Followers: 
+          = user.followers.count
+        .following
+          'Following: 
+          = user.following.count
+        .follow-container= render partial: 'users/follow_button', locals: { user: user, size: 'small' }
+        .bio= simple_format user.bio

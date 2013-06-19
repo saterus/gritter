@@ -10,6 +10,9 @@ class User < Neo4j::Rails::Model
   has_n(:grits).from(Grit, :author)
   has_one(:latest_grit).to(Grit)
 
+  has_n(:following).to(User)
+  has_n(:followers).from(User, :following)
+
   validates :username, presence: true, length: {in: 1..20}
   validates :name, presence: true, length: {in: 1..50}
 

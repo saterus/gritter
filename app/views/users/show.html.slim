@@ -4,6 +4,9 @@ h3= @user.username
 
 p= simple_format @user.bio if @user.bio.present?
 
+= render partial: 'users/follow_button', locals: { user: @user }
+
 ul.vertical-list
-  - @user.grits.each do |grit|
+  - @grits.each do |grit|
     li= render partial: 'grits/grit', locals: {grit: grit}
+
