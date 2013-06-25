@@ -5,6 +5,7 @@ gem 'rails', '3.2.12'
 
 gem 'jruby-openssl'
 gem 'neo4j', '>= 2.2.3'
+gem 'neo4j-cypher', git: 'git@github.com:andreasronge/neo4j-cypher.git'
 gem 'jquery-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'slim-rails', '~> 2.0'

@@ -2,7 +2,4 @@
   = render partial: 'grits/form'
 
 .vertical-list
-  - @grits.each do |grit|
-    .row
-      .vertical-list-item.grit
-        = render partial: 'grits/grit', locals: {grit: grit}
+  = render partial: 'grits/grit', collection: @grits

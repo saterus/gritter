@@ -1,12 +1,15 @@
-= image_tag @user.avatar_url(150)
+.row
+  .large-3.columns.large-offset-2
+    = image_tag @user.avatar_url(150)
 
-h3= @user.username
+  .large-5.columns
+    h3= render partial: 'users/username', locals: { user: @user}
+    p= simple_format @user.bio if @user.bio.present?
+    = render partial: 'users/follow_button', locals: { user: @user }
 
-p= simple_format @user.bio if @user.bio.present?
+  .large-2.columns
 
-= render partial: 'users/follow_button', locals: { user: @user }
-
-ul.vertical-list
-  - @grits.each do |grit|
-    li= render partial: 'grits/grit', locals: {grit: grit}
+.row
+  .vertical-list
+    = render partial: 'grits/grit', collection: @grits
 

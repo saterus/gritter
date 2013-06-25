@@ -24,7 +24,7 @@ class User < Neo4j::Rails::Model
     grits = Neo4j.query(self){ |u|
       u > User.following > node(:followed) < Grit.author < node(:g).desc(:created_at).limit(25)
       ret(:g)
-    }.to_a.map{|res| res[:g] }
+    }.map{|res| res[:g] }
 
     if grits.empty?
       grits = Grit.find(:all).take(50)

@@ -1,3 +1,9 @@
+GIT
+  remote: git@github.com:andreasronge/neo4j-cypher.git
+  revision: 8e90eabb3bd210ba50d7a7bc5372e7a80fe74ab3
+  specs:
+    neo4j-cypher (1.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -68,7 +74,6 @@ GEM
     neo4j-core (2.2.4-java)
       neo4j-community (>= 1.8.1, < 1.9)
       neo4j-cypher (~> 1.0.0)
-    neo4j-cypher (1.0.0)
     neo4j-wrapper (2.2.4-java)
       neo4j-core (= 2.2.4)
     orm_adapter (0.4.0)
@@ -172,6 +177,7 @@ DEPENDENCIES
   jquery-rails
   jruby-openssl
   neo4j (>= 2.2.3)
+  neo4j-cypher!
   pry
   pry-rails
   quiet_assets

@@ -38,6 +38,11 @@ class UsersController < ApplicationController
     raise SelfFollowException if follower == followee
     raise AlreadyFollowingException if followee.followers.include?(follower)
 
+    # I'd love to use:
+    # Neo4j.query(follower, followee) do |me, them|
+    #   create_unique_path{ me > User.following > them }
+    # end
+
     followee.followers << follower
     followee.save
     respond_with followee

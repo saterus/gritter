@@ -1,0 +1,13 @@
+.row
+  .vertical-list-item.user
+    = link_to user_path(user)
+      .avatar= image_tag user.avatar_url(90)
+    = render partial: 'users/username', locals: { user: user}
+    .followers
+      'Followers: 
+      = user.followers.count
+    .following
+      'Following: 
+      = user.following.count
+    .follow-container= render partial: 'users/follow_button', locals: { user: user, size: 'small' }
+    .bio= simple_format user.bio
