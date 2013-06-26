@@ -7,6 +7,9 @@ Gritter::Application.routes.draw do
       post 'follow', as: 'follow'
       delete 'unfollow', as: 'unfollow'
     end
+    collection do
+      get 'recommended', as: 'recommended'
+    end
   end
 
   get 'sign_in', to: 'sessions#new', as: 'sign_in'

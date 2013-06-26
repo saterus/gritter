@@ -60,4 +60,9 @@ class UsersController < ApplicationController
     respond_with followee
   end
 
+  def recommended
+    @users = current_user.get_recommended_users
+    render :index
+  end
+
 end

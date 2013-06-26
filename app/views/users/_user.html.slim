@@ -10,4 +10,8 @@
       'Following: 
       = user.following.count
     .follow-container= render partial: 'users/follow_button', locals: { user: user, size: 'small' }
+    - if user[:followed_by].present?
+      .followed-by
+        'Followed by: 
+        = link_to user[:followed_by].name, user[:followed_by]
     .bio= simple_format user.bio

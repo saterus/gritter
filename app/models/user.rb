@@ -20,6 +20,21 @@ class User < Neo4j::Rails::Model
     "https://secure.gravatar.com/avatar/#{avatar_hash}?f=y&d=wavatar&s=#{size}"
   end
 
+  def get_recommended_users
+    users = Neo4j.query(self){|u|
+      u > User.following > node(:directly) > User.following > node(:recommended).where{|r| r != u && r != :directly }.limit(25).asc(:name)
+      ret(:recommended, :directly)
+    }.map{|row|
+      row[:recommended].tap{|u| u[:followed_by] = row[:directly] }
+    }
+
+    puts "Recommended Users for #{self.name}"
+    puts users.map{|u| {rec: u.name, by: u[:followed_by].name } }
+    puts "="*40
+
+    users
+  end
+
   def timeline
     grits = Neo4j.query(self){ |u|
       u > User.following > node(:followed) < Grit.author < node(:g).desc(:created_at).limit(25)
