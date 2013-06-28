@@ -11,9 +11,9 @@ end
 class Fake
   def self.user
     user = User.new do |u|
-      u.username = Faker::Internet.domain_word
       u.name = Faker::Name.name
-      u.bio = Faker::Lorem.paragraph(3)[0..250]
+      u.username = u.name.downcase.split(' ').sort_by(&:length).last
+      u.bio = Faker::Lorem.paragraph(3)[0..139]
     end
 
     user.save
@@ -35,7 +35,7 @@ class Fake
     user.latest_grit = g
     user.save
 
-    grits_to_date = (rand(150)+10)
+    grits_to_date = (rand(40)+10)
     while user.grits.count < grits_to_date
       g = Fake.grit(user)
       user.save
@@ -50,9 +50,21 @@ class Fake
 end
 
 def seed!
-  40.times.map do
+  40.times.map do |i|
     u = Fake.full_user
-    puts [u.username, u.grits.count]
+    p [i, u.username, u.grits.count]
     u
   end
+
+  users = User.all.to_a
+
+  users.each_with_index do |u,i|
+    following = users.sample(20) - [u] - user.following.to_a
+    following.each do |f|
+      u.following << f
+    end
+    p [i, u.username, following.map(&:username)]
+  end
+
+  users.each(&:save)
 end
