@@ -8,6 +8,8 @@ require "active_resource/railtie"
 require "sprockets/railtie"
 require "rails/test_unit/railtie"
 
+require 'neo4j/rails/ha_console/railtie' if Rails.env.development?
+
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
   Bundler.require(*Rails.groups(:assets => %w(development test)))
@@ -52,7 +54,9 @@ module Gritter
     end
 
     # Configure where the neo4j database should exist
-    config.neo4j.storage_path = "#{config.root}/db/neo4j-#{Rails.env}"
+    unless Rails.env.development?
+      config.neo4j.storage_path = "#{config.root}/db/neo4j-#{Rails.env}"
+    end
 
 
     # Enable escaping HTML in JSON.

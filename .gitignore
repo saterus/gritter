@@ -1,5 +1,16 @@
 /.bundle
-/db/neo4j-*
 /log/*.log
 /tmp
 .rvmrc
+
+/db/neo4j-*
+/db/ha_neo*
+/neo4j/*.txt
+/neo4j/.shell_history
+/neo4j/bin
+/neo4j/data
+/neo4j/doc
+/neo4j/lib
+/neo4j/neo4j-enterprise*
+/neo4j/plugins
+/neo4j/system
