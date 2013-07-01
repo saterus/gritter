@@ -5,4 +5,8 @@ $(function() {
       $buttons.toggle();
     });
   }
+
+  $(".follow-button").each(function(i,e){
+    new FollowButton($(e));
+  });
 });

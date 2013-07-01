@@ -8,6 +8,3 @@
       = link_to 'Follow', follow_user_path(user, :json), method: :post, remote: true
     .unfollow(class=size style="display: #{following ? 'block' : 'none'};")
       = link_to 'Unfollow', unfollow_user_path(user, :json), method: :delete, remote: true
-
-  javascript:
-    var button = new FollowButton($(".follow-button.user-#{user.id}"));
