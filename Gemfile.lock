@@ -182,7 +182,7 @@ DEPENDENCIES
   ffaker
   jquery-rails
   jruby-openssl
-  neo4j (>= 2.2.3)
+  neo4j (>= 2.3.0)
   neo4j-advanced (= 1.9)
   neo4j-community (= 1.9)
   neo4j-cypher!
