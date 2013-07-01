@@ -5,4 +5,5 @@
 require File.expand_path('../config/application', __FILE__)
 
 Gritter::Application.load_tasks
+
 require 'neography/tasks'

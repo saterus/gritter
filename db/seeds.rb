@@ -16,8 +16,6 @@ class Fake
       u.bio = Faker::Lorem.paragraph(3)[0..139]
     end
 
-    user.save
-
     user
   end
 
@@ -59,7 +57,7 @@ def seed!
   users = User.all.to_a
 
   users.each_with_index do |u,i|
-    following = users.sample(20) - [u] - user.following.to_a
+    following = users.sample(rand(20)+10) - [u] - u.following.to_a
     following.each do |f|
       u.following << f
     end
