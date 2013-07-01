@@ -167,5 +167,21 @@ body.gritter {
     bottom: 0px;
     right: 20px;
     font-size: 0.85em;
+
+    ul {
+      list-style-type: none;
+      display: inline;
+    }
+    li {
+      display: inline;
+    }
+
+    li:after {
+     content: ", ";
+    }
+
+    // li:last-child:after {
+    //   content: ". ";
+    // }
   }
 }

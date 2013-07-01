@@ -20,19 +20,27 @@ class User < Neo4j::Rails::Model
     "https://secure.gravatar.com/avatar/#{avatar_hash}?f=y&d=wavatar&s=#{size}"
   end
 
+  # START v=node:User_exact("username:greg")
+  # MATCH v-[:`User#following`]->(friend)-[:`User#following`]->(foaf)
+  # WHERE NOT(v-[:`User#following`]->foaf) AND v <> foaf
+  # RETURN distinct(foaf.username) as recommended, count(friend) as score, collect(friend.username) as followed_by
+  # ORDER BY score DESC
   def get_recommended_users
-    users = Neo4j.query(self){|u|
-      u > User.following > node(:directly) > User.following > node(:recommended).where{|r| r != u && r != :directly }.limit(25).asc(:name)
-      ret(:recommended, :directly)
+    Neo4j.query(self) { |u|
+      u > User.following > node(:friend) > User.following > :foaf
+      where_not{ u > User.following > :foaf }
+      where{ u != :foaf }
+      ret(
+        node(:foaf).distinct.as(:recommended).limit(25),
+        node(:friend).count.as(:score).desc,
+        node(:friend)[:username].collect.as(:followed_by)
+      )
     }.map{|row|
-      row[:recommended].tap{|u| u[:followed_by] = row[:directly] }
+      recommended = row[:recommended]
+      recommended[:followed_by] = row[:followed_by].to_a.sample(3).map{|un| User.find(username: un) }
+      recommended[:total_followed_by] = row[:followed_by].count - recommended[:followed_by].count
+      recommended
     }
-
-    puts "Recommended Users for #{self.name}"
-    puts users.map{|u| {rec: u.name, by: u[:followed_by].name } }
-    puts "="*40
-
-    users
   end
 
   def timeline

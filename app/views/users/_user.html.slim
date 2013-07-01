@@ -1,17 +1,27 @@
 .row
   .vertical-list-item.user
+
     = link_to user_path(user)
       .avatar= image_tag user.avatar_url(90)
+
     = render partial: 'users/username', locals: { user: user}
+
     .followers
       'Followers: 
       = user.followers.count
+
     .following
       'Following: 
       = user.following.count
+
     .follow-container= render partial: 'users/follow_button', locals: { user: user, size: 'small' }
+
     - if user[:followed_by].present?
       .followed-by
-        'Followed by: 
-        = link_to user[:followed_by].name, user[:followed_by]
+        'Followed by:
+        ul
+          - user[:followed_by].each do |follower|
+            li= link_to follower.username, follower
+        | and #{user[:total_followed_by]} others.
+
     .bio= simple_format user.bio
