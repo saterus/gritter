@@ -8,6 +8,12 @@ gem 'jruby-openssl'
 gem 'neo4j', '>= 2.3.0'
 gem 'neo4j-cypher', git: 'git@github.com:andreasronge/neo4j-cypher.git'
 gem 'neo4j-community', '1.9'
+gem 'neo4j-advanced', '1.9'
+gem 'neo4j-enterprise', '1.9'
+gem "torquebox"
+gem "torquebox-server"
+gem "torquebox-rake-support"
+gem 'capistrano'
 
 gem 'jquery-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
@@ -29,8 +35,7 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'ffaker'
   gem 'neography'
-  gem 'neo4j-advanced', '1.9'
-  gem 'neo4j-enterprise', '1.9'
+  gem 'torquebox-capistrano-support'
 end
 
 
