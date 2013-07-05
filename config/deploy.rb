@@ -1,7 +1,7 @@
 require 'torquebox-capistrano-support'
 require 'bundler/capistrano'
 
-server                  "gritter.alexburkhart.com", :web, :app, primary: true
+server                  "alexburkhart.com", :web, :app, primary: true
 set :repository,        "https://github.com/saterus/gritter.git"
 set :branch,            "master"
 set :user,              "torquebox"
@@ -9,13 +9,13 @@ set :scm,               :git
 set :scm_verbose,       true
 set :use_sudo,          false
 
-set :deploy_to,         "/opt/apps/gritter.alexburkhart.com"
+set :deploy_to,         "/opt/apps/alexburkhart.com"
 set :torquebox_home,    "/opt/torquebox/current"
 set :jboss_init_script, "/etc/init.d/jboss-as-standalone"
 set :rails_env,         "production"
 set :app_context,       "/"
 set :app_ruby_version,  '1.9'
-set :application,       "gritter.alexburkhart.com"
+set :application,       "alexburkhart.com"
 
 default_environment['JRUBY_OPTS'] = '--1.9'
 default_environment['PATH'] = '/opt/torquebox/current/jboss/bin:/opt/torquebox/current/jruby/bin:/usr/lib64/qt-3.3/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin:/root/bin:/root/bin'
