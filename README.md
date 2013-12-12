@@ -34,9 +34,9 @@ rm -rf neo4j-enterprise-1.9.1
 cd ..
 
 neo4j/bin/neo4j start                          # start Neo4j High Availability server
-be rake neo:seed                               # pre-fill database
+bundle exec rake db:seed                       # pre-fill database
 
-be rails server
+bundle exec rails server
 ```
 
 *If these instructions don't work for you, please let me know so I can fix them!*
